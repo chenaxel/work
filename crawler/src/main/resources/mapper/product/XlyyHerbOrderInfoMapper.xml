@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crawler.core.dao.product.XlyyHerbOrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.crawler.common.domain.po.product.XlyyHerbOrderInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="herb_order_id" jdbcType="VARCHAR" property="herbOrderId" />
+    <result column="herb_order_status" jdbcType="TINYINT" property="herbOrderStatus" />
+    <result column="consult_order_id" jdbcType="VARCHAR" property="consultOrderId" />
+    <result column="diagnosis_id" jdbcType="VARCHAR" property="diagnosisId" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
+    <result column="pharmacy_id" jdbcType="VARCHAR" property="pharmacyId" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctorName" />
+    <result column="doctor_phone" jdbcType="VARCHAR" property="doctorPhone" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="patient_phone" jdbcType="VARCHAR" property="patientPhone" />
+    <result column="herb_type" jdbcType="TINYINT" property="herbType" />
+    <result column="herb_states" jdbcType="VARCHAR" property="herbStates" />
+    <result column="order_price" jdbcType="VARCHAR" property="orderPrice" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime" />
+    <result column="pack_time" jdbcType="TIMESTAMP" property="packTime" />
+    <result column="trans_time" jdbcType="TIMESTAMP" property="transTime" />
+    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="signed_time" jdbcType="TIMESTAMP" property="signedTime" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="order_create_time" jdbcType="TIMESTAMP" property="orderCreateTime" />
+    <result column="is_weixin_user" jdbcType="BIT" property="isWeixinUser" />
+    <result column="tracking_num" jdbcType="VARCHAR" property="trackingNum" />
+    <result column="op_remark_time" jdbcType="TIMESTAMP" property="opRemarkTime" />
+    <result column="post_company_id" jdbcType="VARCHAR" property="postCompanyId" />
+    <result column="order_money" jdbcType="VARCHAR" property="orderMoney" />
+    <result column="presc_price" jdbcType="VARCHAR" property="prescPrice" />
+    <result column="clinic_royalties" jdbcType="VARCHAR" property="clinicRoyalties" />
+    <result column="express_fee" jdbcType="VARCHAR" property="expressFee" />
+    <result column="process_fee" jdbcType="VARCHAR" property="processFee" />
+    <result column="boil_fee" jdbcType="VARCHAR" property="boilFee" />
+    <result column="hide_weight" jdbcType="TINYINT" property="hideWeight" />
+    <result column="diagnosis_presc_price" jdbcType="VARCHAR" property="diagnosisPrescPrice" />
+    <result column="express_state" jdbcType="TINYINT" property="expressState" />
+    <result column="patient_type" jdbcType="TINYINT" property="patientType" />
+    <result column="is_push" jdbcType="TINYINT" property="isPush" />
+    <result column="op_remarker" jdbcType="VARCHAR" property="opRemarker" />
+    <result column="follow_status" jdbcType="INTEGER" property="followStatus" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.crawler.common.domain.po.product.XlyyHerbOrderInfo">
+    <result column="receiver_address" jdbcType="LONGVARCHAR" property="receiverAddress" />
+    <result column="op_remark" jdbcType="LONGVARCHAR" property="opRemark" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, herb_order_id, herb_order_status, consult_order_id, diagnosis_id, doctor_id, 
+    patient_id, pharmacy_id, doctor_name, doctor_phone, patient_name, patient_phone, 
+    herb_type, herb_states, order_price, order_num, receiver_name, receiver_phone, pay_time, 
+    receive_time, pack_time, trans_time, delivery_time, signed_time, insert_time, update_time, 
+    order_create_time, is_weixin_user, tracking_num, op_remark_time, post_company_id, 
+    order_money, presc_price, clinic_royalties, express_fee, process_fee, boil_fee, hide_weight, 
+    diagnosis_presc_price, express_state, patient_type, is_push, op_remarker, follow_status
+  </sql>
+  <sql id="Blob_Column_List">
+    receiver_address, op_remark, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xlyy_herb_order_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xlyy_herb_order_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crawler.common.domain.po.product.XlyyHerbOrderInfo">
+    insert into xlyy_herb_order_info (id, herb_order_id, herb_order_status, 
+      consult_order_id, diagnosis_id, doctor_id, 
+      patient_id, pharmacy_id, doctor_name, 
+      doctor_phone, patient_name, patient_phone, 
+      herb_type, herb_states, order_price, 
+      order_num, receiver_name, receiver_phone, 
+      pay_time, receive_time, pack_time, 
+      trans_time, delivery_time, signed_time, 
+      insert_time, update_time, order_create_time, 
+      is_weixin_user, tracking_num, op_remark_time, 
+      post_company_id, order_money, presc_price, 
+      clinic_royalties, express_fee, process_fee, 
+      boil_fee, hide_weight, diagnosis_presc_price, 
+      express_state, patient_type, is_push, 
+      op_remarker, follow_status, receiver_address, 
+      op_remark, remark)
+    values (#{id,jdbcType=INTEGER}, #{herbOrderId,jdbcType=VARCHAR}, #{herbOrderStatus,jdbcType=TINYINT}, 
+      #{consultOrderId,jdbcType=VARCHAR}, #{diagnosisId,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, 
+      #{patientId,jdbcType=VARCHAR}, #{pharmacyId,jdbcType=VARCHAR}, #{doctorName,jdbcType=VARCHAR}, 
+      #{doctorPhone,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{patientPhone,jdbcType=VARCHAR}, 
+      #{herbType,jdbcType=TINYINT}, #{herbStates,jdbcType=VARCHAR}, #{orderPrice,jdbcType=VARCHAR}, 
+      #{orderNum,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP}, #{packTime,jdbcType=TIMESTAMP}, 
+      #{transTime,jdbcType=TIMESTAMP}, #{deliveryTime,jdbcType=TIMESTAMP}, #{signedTime,jdbcType=TIMESTAMP}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{orderCreateTime,jdbcType=TIMESTAMP}, 
+      #{isWeixinUser,jdbcType=BIT}, #{trackingNum,jdbcType=VARCHAR}, #{opRemarkTime,jdbcType=TIMESTAMP}, 
+      #{postCompanyId,jdbcType=VARCHAR}, #{orderMoney,jdbcType=VARCHAR}, #{prescPrice,jdbcType=VARCHAR}, 
+      #{clinicRoyalties,jdbcType=VARCHAR}, #{expressFee,jdbcType=VARCHAR}, #{processFee,jdbcType=VARCHAR}, 
+      #{boilFee,jdbcType=VARCHAR}, #{hideWeight,jdbcType=TINYINT}, #{diagnosisPrescPrice,jdbcType=VARCHAR}, 
+      #{expressState,jdbcType=TINYINT}, #{patientType,jdbcType=TINYINT}, #{isPush,jdbcType=TINYINT}, 
+      #{opRemarker,jdbcType=VARCHAR}, #{followStatus,jdbcType=INTEGER}, #{receiverAddress,jdbcType=LONGVARCHAR}, 
+      #{opRemark,jdbcType=LONGVARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crawler.common.domain.po.product.XlyyHerbOrderInfo">
+    insert into xlyy_herb_order_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="herbOrderId != null">
+        herb_order_id,
+      </if>
+      <if test="herbOrderStatus != null">
+        herb_order_status,
+      </if>
+      <if test="consultOrderId != null">
+        consult_order_id,
+      </if>
+      <if test="diagnosisId != null">
+        diagnosis_id,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="pharmacyId != null">
+        pharmacy_id,
+      </if>
+      <if test="doctorName != null">
+        doctor_name,
+      </if>
+      <if test="doctorPhone != null">
+        doctor_phone,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="patientPhone != null">
+        patient_phone,
+      </if>
+      <if test="herbType != null">
+        herb_type,
+      </if>
+      <if test="herbStates != null">
+        herb_states,
+      </if>
+      <if test="orderPrice != null">
+        order_price,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="receiverName != null">
+        receiver_name,
+      </if>
+      <if test="receiverPhone != null">
+        receiver_phone,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="receiveTime != null">
+        receive_time,
+      </if>
+      <if test="packTime != null">
+        pack_time,
+      </if>
+      <if test="transTime != null">
+        trans_time,
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time,
+      </if>
+      <if test="signedTime != null">
+        signed_time,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="orderCreateTime != null">
+        order_create_time,
+      </if>
+      <if test="isWeixinUser != null">
+        is_weixin_user,
+      </if>
+      <if test="trackingNum != null">
+        tracking_num,
+      </if>
+      <if test="opRemarkTime != null">
+        op_remark_time,
+      </if>
+      <if test="postCompanyId != null">
+        post_company_id,
+      </if>
+      <if test="orderMoney != null">
+        order_money,
+      </if>
+      <if test="prescPrice != null">
+        presc_price,
+      </if>
+      <if test="clinicRoyalties != null">
+        clinic_royalties,
+      </if>
+      <if test="expressFee != null">
+        express_fee,
+      </if>
+      <if test="processFee != null">
+        process_fee,
+      </if>
+      <if test="boilFee != null">
+        boil_fee,
+      </if>
+      <if test="hideWeight != null">
+        hide_weight,
+      </if>
+      <if test="diagnosisPrescPrice != null">
+        diagnosis_presc_price,
+      </if>
+      <if test="expressState != null">
+        express_state,
+      </if>
+      <if test="patientType != null">
+        patient_type,
+      </if>
+      <if test="isPush != null">
+        is_push,
+      </if>
+      <if test="opRemarker != null">
+        op_remarker,
+      </if>
+      <if test="followStatus != null">
+        follow_status,
+      </if>
+      <if test="receiverAddress != null">
+        receiver_address,
+      </if>
+      <if test="opRemark != null">
+        op_remark,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="herbOrderId != null">
+        #{herbOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="herbOrderStatus != null">
+        #{herbOrderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="consultOrderId != null">
+        #{consultOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisId != null">
+        #{diagnosisId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacyId != null">
+        #{pharmacyId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorName != null">
+        #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorPhone != null">
+        #{doctorPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPhone != null">
+        #{patientPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="herbType != null">
+        #{herbType,jdbcType=TINYINT},
+      </if>
+      <if test="herbStates != null">
+        #{herbStates,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null">
+        #{orderPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null">
+        #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null">
+        #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="packTime != null">
+        #{packTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTime != null">
+        #{transTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryTime != null">
+        #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signedTime != null">
+        #{signedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCreateTime != null">
+        #{orderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isWeixinUser != null">
+        #{isWeixinUser,jdbcType=BIT},
+      </if>
+      <if test="trackingNum != null">
+        #{trackingNum,jdbcType=VARCHAR},
+      </if>
+      <if test="opRemarkTime != null">
+        #{opRemarkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postCompanyId != null">
+        #{postCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMoney != null">
+        #{orderMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="prescPrice != null">
+        #{prescPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicRoyalties != null">
+        #{clinicRoyalties,jdbcType=VARCHAR},
+      </if>
+      <if test="expressFee != null">
+        #{expressFee,jdbcType=VARCHAR},
+      </if>
+      <if test="processFee != null">
+        #{processFee,jdbcType=VARCHAR},
+      </if>
+      <if test="boilFee != null">
+        #{boilFee,jdbcType=VARCHAR},
+      </if>
+      <if test="hideWeight != null">
+        #{hideWeight,jdbcType=TINYINT},
+      </if>
+      <if test="diagnosisPrescPrice != null">
+        #{diagnosisPrescPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="expressState != null">
+        #{expressState,jdbcType=TINYINT},
+      </if>
+      <if test="patientType != null">
+        #{patientType,jdbcType=TINYINT},
+      </if>
+      <if test="isPush != null">
+        #{isPush,jdbcType=TINYINT},
+      </if>
+      <if test="opRemarker != null">
+        #{opRemarker,jdbcType=VARCHAR},
+      </if>
+      <if test="followStatus != null">
+        #{followStatus,jdbcType=INTEGER},
+      </if>
+      <if test="receiverAddress != null">
+        #{receiverAddress,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="opRemark != null">
+        #{opRemark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crawler.common.domain.po.product.XlyyHerbOrderInfo">
+    update xlyy_herb_order_info
+    <set>
+      <if test="herbOrderId != null">
+        herb_order_id = #{herbOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="herbOrderStatus != null">
+        herb_order_status = #{herbOrderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="consultOrderId != null">
+        consult_order_id = #{consultOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisId != null">
+        diagnosis_id = #{diagnosisId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        patient_id = #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacyId != null">
+        pharmacy_id = #{pharmacyId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorName != null">
+        doctor_name = #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorPhone != null">
+        doctor_phone = #{doctorPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPhone != null">
+        patient_phone = #{patientPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="herbType != null">
+        herb_type = #{herbType,jdbcType=TINYINT},
+      </if>
+      <if test="herbStates != null">
+        herb_states = #{herbStates,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null">
+        order_price = #{orderPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null">
+        receiver_name = #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null">
+        receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="packTime != null">
+        pack_time = #{packTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTime != null">
+        trans_time = #{transTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signedTime != null">
+        signed_time = #{signedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCreateTime != null">
+        order_create_time = #{orderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isWeixinUser != null">
+        is_weixin_user = #{isWeixinUser,jdbcType=BIT},
+      </if>
+      <if test="trackingNum != null">
+        tracking_num = #{trackingNum,jdbcType=VARCHAR},
+      </if>
+      <if test="opRemarkTime != null">
+        op_remark_time = #{opRemarkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postCompanyId != null">
+        post_company_id = #{postCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMoney != null">
+        order_money = #{orderMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="prescPrice != null">
+        presc_price = #{prescPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicRoyalties != null">
+        clinic_royalties = #{clinicRoyalties,jdbcType=VARCHAR},
+      </if>
+      <if test="expressFee != null">
+        express_fee = #{expressFee,jdbcType=VARCHAR},
+      </if>
+      <if test="processFee != null">
+        process_fee = #{processFee,jdbcType=VARCHAR},
+      </if>
+      <if test="boilFee != null">
+        boil_fee = #{boilFee,jdbcType=VARCHAR},
+      </if>
+      <if test="hideWeight != null">
+        hide_weight = #{hideWeight,jdbcType=TINYINT},
+      </if>
+      <if test="diagnosisPrescPrice != null">
+        diagnosis_presc_price = #{diagnosisPrescPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="expressState != null">
+        express_state = #{expressState,jdbcType=TINYINT},
+      </if>
+      <if test="patientType != null">
+        patient_type = #{patientType,jdbcType=TINYINT},
+      </if>
+      <if test="isPush != null">
+        is_push = #{isPush,jdbcType=TINYINT},
+      </if>
+      <if test="opRemarker != null">
+        op_remarker = #{opRemarker,jdbcType=VARCHAR},
+      </if>
+      <if test="followStatus != null">
+        follow_status = #{followStatus,jdbcType=INTEGER},
+      </if>
+      <if test="receiverAddress != null">
+        receiver_address = #{receiverAddress,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="opRemark != null">
+        op_remark = #{opRemark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crawler.common.domain.po.product.XlyyHerbOrderInfo">
+    update xlyy_herb_order_info
+    set herb_order_id = #{herbOrderId,jdbcType=VARCHAR},
+      herb_order_status = #{herbOrderStatus,jdbcType=TINYINT},
+      consult_order_id = #{consultOrderId,jdbcType=VARCHAR},
+      diagnosis_id = #{diagnosisId,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      patient_id = #{patientId,jdbcType=VARCHAR},
+      pharmacy_id = #{pharmacyId,jdbcType=VARCHAR},
+      doctor_name = #{doctorName,jdbcType=VARCHAR},
+      doctor_phone = #{doctorPhone,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      patient_phone = #{patientPhone,jdbcType=VARCHAR},
+      herb_type = #{herbType,jdbcType=TINYINT},
+      herb_states = #{herbStates,jdbcType=VARCHAR},
+      order_price = #{orderPrice,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=INTEGER},
+      receiver_name = #{receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      pack_time = #{packTime,jdbcType=TIMESTAMP},
+      trans_time = #{transTime,jdbcType=TIMESTAMP},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      signed_time = #{signedTime,jdbcType=TIMESTAMP},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      order_create_time = #{orderCreateTime,jdbcType=TIMESTAMP},
+      is_weixin_user = #{isWeixinUser,jdbcType=BIT},
+      tracking_num = #{trackingNum,jdbcType=VARCHAR},
+      op_remark_time = #{opRemarkTime,jdbcType=TIMESTAMP},
+      post_company_id = #{postCompanyId,jdbcType=VARCHAR},
+      order_money = #{orderMoney,jdbcType=VARCHAR},
+      presc_price = #{prescPrice,jdbcType=VARCHAR},
+      clinic_royalties = #{clinicRoyalties,jdbcType=VARCHAR},
+      express_fee = #{expressFee,jdbcType=VARCHAR},
+      process_fee = #{processFee,jdbcType=VARCHAR},
+      boil_fee = #{boilFee,jdbcType=VARCHAR},
+      hide_weight = #{hideWeight,jdbcType=TINYINT},
+      diagnosis_presc_price = #{diagnosisPrescPrice,jdbcType=VARCHAR},
+      express_state = #{expressState,jdbcType=TINYINT},
+      patient_type = #{patientType,jdbcType=TINYINT},
+      is_push = #{isPush,jdbcType=TINYINT},
+      op_remarker = #{opRemarker,jdbcType=VARCHAR},
+      follow_status = #{followStatus,jdbcType=INTEGER},
+      receiver_address = #{receiverAddress,jdbcType=LONGVARCHAR},
+      op_remark = #{opRemark,jdbcType=LONGVARCHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crawler.common.domain.po.product.XlyyHerbOrderInfo">
+    update xlyy_herb_order_info
+    set herb_order_id = #{herbOrderId,jdbcType=VARCHAR},
+      herb_order_status = #{herbOrderStatus,jdbcType=TINYINT},
+      consult_order_id = #{consultOrderId,jdbcType=VARCHAR},
+      diagnosis_id = #{diagnosisId,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      patient_id = #{patientId,jdbcType=VARCHAR},
+      pharmacy_id = #{pharmacyId,jdbcType=VARCHAR},
+      doctor_name = #{doctorName,jdbcType=VARCHAR},
+      doctor_phone = #{doctorPhone,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      patient_phone = #{patientPhone,jdbcType=VARCHAR},
+      herb_type = #{herbType,jdbcType=TINYINT},
+      herb_states = #{herbStates,jdbcType=VARCHAR},
+      order_price = #{orderPrice,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=INTEGER},
+      receiver_name = #{receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      pack_time = #{packTime,jdbcType=TIMESTAMP},
+      trans_time = #{transTime,jdbcType=TIMESTAMP},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      signed_time = #{signedTime,jdbcType=TIMESTAMP},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      order_create_time = #{orderCreateTime,jdbcType=TIMESTAMP},
+      is_weixin_user = #{isWeixinUser,jdbcType=BIT},
+      tracking_num = #{trackingNum,jdbcType=VARCHAR},
+      op_remark_time = #{opRemarkTime,jdbcType=TIMESTAMP},
+      post_company_id = #{postCompanyId,jdbcType=VARCHAR},
+      order_money = #{orderMoney,jdbcType=VARCHAR},
+      presc_price = #{prescPrice,jdbcType=VARCHAR},
+      clinic_royalties = #{clinicRoyalties,jdbcType=VARCHAR},
+      express_fee = #{expressFee,jdbcType=VARCHAR},
+      process_fee = #{processFee,jdbcType=VARCHAR},
+      boil_fee = #{boilFee,jdbcType=VARCHAR},
+      hide_weight = #{hideWeight,jdbcType=TINYINT},
+      diagnosis_presc_price = #{diagnosisPrescPrice,jdbcType=VARCHAR},
+      express_state = #{expressState,jdbcType=TINYINT},
+      patient_type = #{patientType,jdbcType=TINYINT},
+      is_push = #{isPush,jdbcType=TINYINT},
+      op_remarker = #{opRemarker,jdbcType=VARCHAR},
+      follow_status = #{followStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

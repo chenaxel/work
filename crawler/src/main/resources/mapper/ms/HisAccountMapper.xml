@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crawler.core.dao.ms.HisAccountMapper">
+  <resultMap id="BaseResultMap" type="com.crawler.common.domain.po.ms.HisAccount">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="uid_type" jdbcType="TINYINT" property="uidType" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="time_group" jdbcType="INTEGER" property="timeGroup" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="account_desc" jdbcType="VARCHAR" property="accountDesc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, account_id, uid, uid_type, order_id, type, money, time_group, status, account_desc, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from his_account
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from his_account
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.crawler.common.domain.po.ms.HisAccount">
+    insert into his_account (id, account_id, uid, 
+      uid_type, order_id, type, 
+      money, time_group, status, 
+      account_desc, create_time, update_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{accountId,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, 
+      #{uidType,jdbcType=TINYINT}, #{orderId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{money,jdbcType=DECIMAL}, #{timeGroup,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{accountDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crawler.common.domain.po.ms.HisAccount">
+    insert into his_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="uidType != null">
+        uid_type,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="timeGroup != null">
+        time_group,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="accountDesc != null">
+        account_desc,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="uidType != null">
+        #{uidType,jdbcType=TINYINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="timeGroup != null">
+        #{timeGroup,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="accountDesc != null">
+        #{accountDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crawler.common.domain.po.ms.HisAccount">
+    update his_account
+    <set>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="uidType != null">
+        uid_type = #{uidType,jdbcType=TINYINT},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="timeGroup != null">
+        time_group = #{timeGroup,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="accountDesc != null">
+        account_desc = #{accountDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crawler.common.domain.po.ms.HisAccount">
+    update his_account
+    set account_id = #{accountId,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      uid_type = #{uidType,jdbcType=TINYINT},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      money = #{money,jdbcType=DECIMAL},
+      time_group = #{timeGroup,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      account_desc = #{accountDesc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,74 @@
+spring:
+  datasource:
+    druid:
+      # datasource 1
+      one:
+        url: jdbc:mysql://123.59.134.105:4080/tcm_sogou?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&autoReconnectForPools=true&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: xiaoluzhuanyongmima
+        initial-size: 10
+        max-active: 50
+        min-idle: 5
+        max-wait: 30000
+        validation-query: /* ping */ select 1
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: -1
+        #filter.slf4j.enabled: true
+        filters: stat,wall
+      # datasource 2
+      two:
+        url: jdbc:mysql://123.59.134.105:4080/tcm_product?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&autoReconnectForPools=true&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: xiaoluzhuanyongmima
+        initial-size: 10
+        max-active: 50
+        min-idle: 5
+        max-wait: 30000
+        validation-query: /* ping */ select 1
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: -1
+        #: filter.slf4j.enabled: true
+        filters: stat,wall
+      three:
+        url: jdbc:mysql://123.59.134.105:4080/tcm_ms?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&autoReconnectForPools=true&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: xiaoluzhuanyongmima
+        initial-size: 10
+        max-active: 50
+        min-idle: 5
+        max-wait: 30000
+        validation-query: /* ping */ select 1
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: -1
+        #: filter.slf4j.enabled: true
+        filters: stat,wall
+  jta:
+    atomikos:
+      datasource:
+        min-pool-size: 0
+        max-pool-size: 20
+# mybatis
+mybatis:
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: true
+    use-generated-keys: true
+    default-executor-type: simple
+    default-statement-timeout: 10
+    map-underscore-to-camel-case: true
+
+thread:
+  pool:
+    core-pool-size: 5
+    max-pool-size: 2000
+    wait-for-tasks-to-complete-on-shutdown: true
