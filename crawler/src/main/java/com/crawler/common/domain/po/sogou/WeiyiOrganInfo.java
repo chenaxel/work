@@ -4,21 +4,21 @@ import lombok.Data;
 
 @Data
 public class WeiyiOrganInfo {
-    private Long id;
+	private Long id;
 
-    private String name;
+	private String name;
 
-    private String grade;
+	private String grade;
 
-    private String contact;
+	private String contact;
 
-    private String location;
+	private String location;
 
-    private String province;
+	private String province;
 
-    private String provinceCode;
+	private String provinceCode;
 
-    private String city;
+	private String city;
 
-    private String cityCode;
+	private String cityCode;
 }

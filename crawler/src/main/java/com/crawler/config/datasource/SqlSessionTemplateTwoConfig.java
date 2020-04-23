@@ -26,7 +26,7 @@ public class SqlSessionTemplateTwoConfig {
 
 	@Bean("sqlSessionFactoryTwo")
 	@Primary
-	public SqlSessionFactory sqlSessionFactoryTwo(@Qualifier("dataSourceTwo") DataSource dataSource, @Qualifier("configurationTwo")org.apache.ibatis.session.Configuration configuration) throws Exception {
+	public SqlSessionFactory sqlSessionFactoryTwo(@Qualifier("dataSourceTwo") DataSource dataSource, @Qualifier("configurationTwo") org.apache.ibatis.session.Configuration configuration) throws Exception {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setEnvironment("datasourceTwo");

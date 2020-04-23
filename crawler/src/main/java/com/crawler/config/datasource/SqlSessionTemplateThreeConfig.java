@@ -18,27 +18,27 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "com.crawler.core.dao.ms", sqlSessionTemplateRef = "sqlSessionTemplateThree")
 public class SqlSessionTemplateThreeConfig {
 
-    @Bean
-    @ConfigurationProperties(prefix = "mybatis.configuration3")
-    public org.apache.ibatis.session.Configuration configurationThree() {
-        return new org.apache.ibatis.session.Configuration();
-    }
+	@Bean
+	@ConfigurationProperties(prefix = "mybatis.configuration3")
+	public org.apache.ibatis.session.Configuration configurationThree() {
+		return new org.apache.ibatis.session.Configuration();
+	}
 
-    @Bean("sqlSessionFactoryThree")
-    @Primary
-    public SqlSessionFactory sqlSessionFactoryThree(@Qualifier("dataSourceThree") DataSource dataSource, @Qualifier("configurationThree")org.apache.ibatis.session.Configuration configuration) throws Exception {
-        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-        factoryBean.setDataSource(dataSource);
-        factoryBean.setEnvironment("datasourceThree");
-        factoryBean.setConfiguration(configuration);
-        factoryBean.setMapperLocations(
-                new PathMatchingResourcePatternResolver().getResources("classpath:mapper/ms/*.xml"));
-        return factoryBean.getObject();
-    }
+	@Bean("sqlSessionFactoryThree")
+	@Primary
+	public SqlSessionFactory sqlSessionFactoryThree(@Qualifier("dataSourceThree") DataSource dataSource, @Qualifier("configurationThree") org.apache.ibatis.session.Configuration configuration) throws Exception {
+		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+		factoryBean.setDataSource(dataSource);
+		factoryBean.setEnvironment("datasourceThree");
+		factoryBean.setConfiguration(configuration);
+		factoryBean.setMapperLocations(
+				new PathMatchingResourcePatternResolver().getResources("classpath:mapper/ms/*.xml"));
+		return factoryBean.getObject();
+	}
 
-    @Bean("sqlSessionTemplateThree")
-    public SqlSessionTemplate sqlSessionTemplateThree(@Qualifier("sqlSessionFactoryThree") SqlSessionFactory sqlSessionFactoryThree) {
-        return new SqlSessionTemplate(sqlSessionFactoryThree);
-    }
+	@Bean("sqlSessionTemplateThree")
+	public SqlSessionTemplate sqlSessionTemplateThree(@Qualifier("sqlSessionFactoryThree") SqlSessionFactory sqlSessionFactoryThree) {
+		return new SqlSessionTemplate(sqlSessionFactoryThree);
+	}
 
 }

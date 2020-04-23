@@ -7,31 +7,31 @@ import lombok.Setter;
 @Setter
 public class CustomDataSourceProperties {
 
-    private String url;
+	private String url;
 
-    private String username;
+	private String username;
 
-    private String password;
+	private String password;
 
-    private int maxActive;
+	private int maxActive;
 
-    private int minIdle;
+	private int minIdle;
 
-    private int maxWait;
+	private int maxWait;
 
-    private int initialSize;
+	private int initialSize;
 
-    private String validationQuery;
+	private String validationQuery;
 
-    private boolean testOnBorrow;
+	private boolean testOnBorrow;
 
-    private boolean testOnReturn;
+	private boolean testOnReturn;
 
-    private boolean testWhileIdle;
+	private boolean testWhileIdle;
 
-    private int timeBetweenEvictionRunsMillis;
+	private int timeBetweenEvictionRunsMillis;
 
-    private int minEvictableIdleTimeMillis;
+	private int minEvictableIdleTimeMillis;
 
-    private String filters;
+	private String filters;
 }
